@@ -1186,6 +1186,11 @@
     }
   }
 
+  document.querySelector('[data-qris-dropzone]')?.addEventListener('click', (e) => {
+    if (e.target.closest('[data-qris-remove]')) return;
+    document.querySelector('[data-qris-input]')?.click();
+  });
+
   document.querySelector('[data-qris-input]')?.addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
