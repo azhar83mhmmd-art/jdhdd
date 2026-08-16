@@ -152,11 +152,16 @@
   }
 
   // ── Bangun query Supabase sesuai filter aktif ────────────────
-  function buildAccountsQuery(status) {
+  // Catatan: listing utama menampilkan status AVAILABLE dan RESERVED —
+  // akun yang sedang di-checkout (belum bayar/belum dikonfirmasi admin)
+  // TIDAK langsung disembunyikan dari website. Hanya jadi SOLD kalau
+  // admin sudah approve bukti pembayaran; kalau reservasi kedaluwarsa
+  // atau ditolak admin, akun otomatis kembali AVAILABLE.
+  function buildAccountsQuery(statuses) {
     let query = supabaseClient
       .from('accounts')
       .select('*, account_images(id, image_url, is_primary), categories(name)', { count: 'exact' })
-      .eq('status', status);
+      .in('status', statuses);
 
     if (state.category) query = query.eq('category_id', state.category);
     if (state.platform) query = query.ilike('platform', `%${state.platform}%`);
@@ -194,7 +199,7 @@
     try {
       const from = (state.page - 1) * state.limit;
       const to = from + state.limit - 1;
-      const { data, error, count } = await buildAccountsQuery('AVAILABLE').range(from, to);
+      const { data, error, count } = await buildAccountsQuery(['AVAILABLE', 'RESERVED']).range(from, to);
       if (error) throw error;
 
       if (append) {
