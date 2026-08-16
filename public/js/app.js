@@ -219,7 +219,9 @@ const ARRZ = (function () {
         const { data, error } = await supabaseClient
           .from('accounts')
           .select('*, account_images(id, image_url, is_primary), categories(name)')
-          .eq('status', 'AVAILABLE')
+          // Akun RESERVED (sedang checkout, belum dikonfirmasi admin) tetap
+          // ditampilkan — jangan langsung disembunyikan sebelum admin approve.
+          .in('status', ['AVAILABLE', 'RESERVED'])
           .eq('featured', true)
           .order('created_at', { ascending: false })
           .limit(8);
