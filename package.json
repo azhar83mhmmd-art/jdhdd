@@ -1,0 +1,10 @@
+{
+  "name": "arrz-market",
+  "version": "2.0.0",
+  "description": "ARRZ MARKET - Marketplace jual beli akun digital (Pure Supabase + Static Frontend + Vercel)",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve public",
+    "vercel-build": "echo 'Static site, tidak ada build step.'"
+  }
+}
