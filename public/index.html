@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARRZ MARKET — Marketplace Akun, Simpel dan Terpercaya.</title>
+  <meta name="description" content="Temukan, tawar, dan beli akun digital dengan proses yang sederhana melalui ARRZ MARKET." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <!-- ═══ Navbar ═══ -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="shop.html" class="btn btn-primary btn-sm">Cari Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <!-- ═══ Hero ═══ -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">Marketplace Akun Terpercaya</span>
+        <h1 class="hero__headline">Temukan Akun yang Kamu Cari.</h1>
+        <p class="hero__sub">Cari, tawar, atau jual akun digital dengan proses yang sederhana. Setiap transaksi terhubung langsung lewat WhatsApp — tanpa ribet, tanpa perantara rumit.</p>
+
+        <form class="hero__search" data-hero-search>
+          <input type="search" name="q" placeholder="Cari akun, platform, atau kategori..." aria-label="Cari akun" />
+          <button type="submit" class="btn btn-primary">Cari</button>
+        </form>
+
+        <div class="hero__stats">
+          <div>
+            <div class="hero__stat-num" data-stat-total>—</div>
+            <div class="hero__stat-label">Akun Tersedia</div>
+          </div>
+          <div>
+            <div class="hero__stat-num" data-stat-category>—</div>
+            <div class="hero__stat-label">Kategori</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__ticket hero__ticket--back">
+          <div class="hero__ticket-code">ACC-00042</div>
+          <div class="hero__ticket-bar"></div>
+          <div class="hero__ticket-bar hero__ticket-bar--short"></div>
+        </div>
+        <div class="hero__ticket hero__ticket--front">
+          <div class="hero__ticket-code">ACC-00108</div>
+          <div class="hero__ticket-bar"></div>
+          <div class="hero__ticket-bar hero__ticket-bar--short"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Kategori ═══ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2>Jelajahi Kategori</h2>
+          <p>Temukan akun berdasarkan platform yang kamu butuhkan.</p>
+        </div>
+      </div>
+      <div class="category-grid" data-category-grid></div>
+    </div>
+  </section>
+
+  <!-- ═══ Akun Unggulan ═══ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2>Akun Unggulan</h2>
+          <p>Pilihan akun terbaik yang tersedia saat ini.</p>
+        </div>
+        <a href="shop.html" class="btn btn-ghost">Lihat Semua →</a>
+      </div>
+      <div class="account-grid" data-featured-accounts></div>
+    </div>
+  </section>
+
+  <!-- ═══ Cara Kerja ═══ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section__head">
+        <div>
+          <h2>Cara Kerja</h2>
+          <p>Tiga langkah sederhana untuk bertransaksi di ARRZ MARKET.</p>
+        </div>
+      </div>
+      <div class="step-list">
+        <div class="step-card">
+          <span class="step-card__num">01</span>
+          <h3>Cari Akun</h3>
+          <p>Jelajahi katalog akun berdasarkan kategori, platform, atau kata kunci yang kamu inginkan.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">02</span>
+          <h3>Beli atau Tawar</h3>
+          <p>Klik "Beli Sekarang" untuk harga pas, atau "Tawar Harga" untuk negosiasi langsung dengan admin.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">03</span>
+          <h3>Selesaikan via WhatsApp</h3>
+          <p>Kamu akan diarahkan ke WhatsApp admin dengan pesan yang sudah siap untuk melanjutkan transaksi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA Jual Akun ═══ -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Punya Akun untuk Dijual?</h2>
+          <p>Ajukan akunmu dan biarkan kami membantu menemukan pembeli yang tepat.</p>
+        </div>
+        <a href="sell.html" class="btn btn-gold">Jual Akun Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand" data-site-name>ARRZ MARKET</div>
+          <p>Marketplace akun digital yang simpel dan terpercaya. Temukan, tawar, dan beli akun dengan proses yang jelas dan aman.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="shop.html">Beli Akun</a></li>
+            <li><a href="sell.html">Jual Akun</a></li>
+            <li><a href="how-it-works.html">Cara Kerja</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Bantuan</h4>
+          <ul>
+            <li><a href="faq.html">Pertanyaan Umum</a></li>
+            <li><a href="how-it-works.html">Panduan Transaksi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/realtime.js"></script>
+</body>
+</html>
