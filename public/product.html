@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Akun — ARRZ MARKET</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="shop.html" class="btn btn-primary btn-sm">Cari Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+
+      <div data-product-loading style="text-align:center; padding:60px 0;">
+        <div class="skeleton" style="height:24px; width:200px; margin:0 auto 20px;"></div>
+        <p>Memuat detail akun...</p>
+      </div>
+
+      <div class="empty-state" data-product-not-found style="display:none;">
+        <h3>Akun Tidak Ditemukan</h3>
+        <p>Akun yang kamu cari mungkin sudah dihapus atau tautannya tidak valid.</p>
+        <a href="shop.html" class="btn btn-primary" style="margin-top:12px;">Kembali ke Katalog</a>
+      </div>
+
+      <div class="product-layout" data-product-root style="display:none;">
+        <!-- ═══ Galeri ═══ -->
+        <div>
+          <div class="product-gallery__main" data-gallery-main></div>
+          <div class="product-gallery__thumbs" data-gallery-thumbs></div>
+        </div>
+
+        <!-- ═══ Info ═══ -->
+        <div>
+          <div class="product-info__code" data-product-code></div>
+          <div class="product-info__badges">
+            <span class="badge badge--available" data-product-status-badge></span>
+            <span class="badge badge--neutral" data-product-category-badge></span>
+          </div>
+          <h1 data-product-name></h1>
+          <p style="font-weight:600; color:var(--ink-soft);" data-product-platform></p>
+          <div class="product-info__price" data-product-price></div>
+
+          <div class="product-info__actions">
+            <button class="btn btn-primary" data-buy-btn>Beli Sekarang</button>
+            <button class="btn" data-offer-btn>Tawar Harga</button>
+          </div>
+
+          <div class="product-block">
+            <h3>Deskripsi</h3>
+            <p data-product-description></p>
+          </div>
+
+          <div class="product-block" data-product-details-block>
+            <h3>Detail Akun</h3>
+            <p data-product-details></p>
+          </div>
+
+          <div class="product-block" data-product-features-block>
+            <h3>Fitur</h3>
+            <p data-product-features></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Modal Beli Sekarang ═══ -->
+  <div class="modal-overlay" data-buy-modal>
+    <div class="modal">
+      <div class="modal__header">
+        <h3>Beli Sekarang</h3>
+        <button class="modal__close" data-modal-close aria-label="Tutup">✕</button>
+      </div>
+      <div class="modal__summary">
+        <div class="modal__summary-row"><span>Akun</span><strong data-modal-account-name></strong></div>
+        <div class="modal__summary-row"><span>Harga</span><strong data-modal-account-price></strong></div>
+      </div>
+      <p style="font-size:0.85rem; margin:-4px 0 14px; color:var(--ink-soft);">Data ini digunakan untuk proses transaksi dan penyerahan akun.</p>
+      <form data-buy-form>
+        <div class="field">
+          <label for="buy-email">Email</label>
+          <input type="email" id="buy-email" name="buyer_email" required placeholder="Masukkan email aktif" maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="buy-wa">Nomor WhatsApp</label>
+          <input type="tel" id="buy-wa" name="buyer_whatsapp" required placeholder="08xxxxxxxxxx" maxlength="20" />
+        </div>
+        <div class="field">
+          <label for="buy-ig">Username Instagram (opsional)</label>
+          <input type="text" id="buy-ig" name="buyer_instagram" placeholder="@username" maxlength="100" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Lanjutkan Pembayaran</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ═══ Modal Tawar Harga ═══ -->
+  <div class="modal-overlay" data-offer-modal>
+    <div class="modal">
+      <div class="modal__header">
+        <h3>Tawar Harga</h3>
+        <button class="modal__close" data-modal-close aria-label="Tutup">✕</button>
+      </div>
+      <div class="modal__summary">
+        <div class="modal__summary-row"><span>Akun</span><strong data-modal-account-name></strong></div>
+        <div class="modal__summary-row"><span>Harga Asli</span><strong data-modal-account-price></strong></div>
+      </div>
+      <form data-offer-form>
+        <div class="field">
+          <label for="offer-price">Harga Tawaran (Rp)</label>
+          <input type="number" id="offer-price" name="offer_price" required min="1" />
+        </div>
+        <div class="field">
+          <label for="offer-name">Nama Kamu</label>
+          <input type="text" id="offer-name" name="buyer_name" required maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="offer-wa">Nomor WhatsApp</label>
+          <input type="tel" id="offer-wa" name="buyer_whatsapp" required placeholder="08xxxxxxxxxx" maxlength="20" />
+        </div>
+        <div class="field">
+          <label for="offer-note">Catatan (opsional)</label>
+          <textarea id="offer-note" name="note" maxlength="1000" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Ajukan Tawaran</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/wa-templates.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/product.js"></script>
+  <script src="js/realtime.js"></script>
+</body>
+</html>
