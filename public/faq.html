@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — ARRZ MARKET</title>
+  <meta name="description" content="Pertanyaan yang sering diajukan seputar ARRZ MARKET." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="shop.html" class="btn btn-primary btn-sm">Cari Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <section class="section--tight" style="padding-top:36px;">
+    <div class="container" style="max-width: 760px;">
+      <span class="eyebrow">Bantuan</span>
+      <h1 style="margin-bottom:6px;">Pertanyaan Umum</h1>
+      <p>Belum menemukan jawaban yang kamu cari? Hubungi admin langsung lewat WhatsApp.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container" style="max-width: 760px;">
+      <div class="faq-item">
+        <button class="faq-item__q">
+          Bagaimana cara membeli akun di ARRZ MARKET?
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">
+          <p>Pilih akun yang kamu inginkan di halaman Beli Akun, lalu klik "Beli Sekarang". Kamu akan diarahkan ke WhatsApp admin dengan pesan yang sudah berisi detail akun untuk melanjutkan proses pembayaran.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">
+          Apakah harga akun bisa ditawar?
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">
+          <p>Bisa. Gunakan tombol "Tawar Harga" pada halaman detail akun, isi harga yang kamu inginkan, dan admin akan menghubungimu lewat WhatsApp untuk negosiasi lebih lanjut.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">
+          Bagaimana cara menjual akun saya?
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">
+          <p>Isi form di halaman Jual Akun selengkap mungkin, sertakan foto sebagai bukti kepemilikan. Tim kami akan meninjau pengajuanmu dan menghubungimu lewat WhatsApp untuk proses verifikasi.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">
+          Apakah transaksi di ARRZ MARKET aman?
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">
+          <p>Kami tidak pernah meminta password, OTP, atau recovery code di form manapun. Semua verifikasi dan serah terima akun dilakukan langsung lewat komunikasi WhatsApp dengan admin.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">
+          Berapa lama proses verifikasi pengajuan jual akun?
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">
+          <p>Admin akan menghubungimu lewat WhatsApp setelah meninjau pengajuan. Waktu peninjauan dapat bervariasi tergantung kelengkapan data yang kamu berikan.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">
+          Apa yang terjadi jika akun yang saya minati sudah terjual?
+          <span class="faq-item__icon">+</span>
+        </button>
+        <div class="faq-item__a">
+          <p>Status akun diperbarui secara langsung. Jika akun sudah terjual saat kamu mencoba membeli atau menawar, sistem akan memberi tahu dan kamu bisa memilih akun lain yang tersedia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.querySelectorAll('.faq-item__q').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        btn.closest('.faq-item').classList.toggle('is-open');
+      });
+    });
+  </script>
+</body>
+</html>
