@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beli Akun — ARRZ MARKET</title>
+  <meta name="description" content="Jelajahi katalog akun digital di ARRZ MARKET. Filter berdasarkan kategori, harga, dan platform." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="sell.html" class="btn btn-primary btn-sm">Jual Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <section class="section--tight" style="padding-top:36px;">
+    <div class="container">
+      <span class="eyebrow">Katalog Akun</span>
+      <h1 style="margin-bottom: 6px;">Beli Akun</h1>
+      <p>Gunakan filter di samping untuk menemukan akun yang sesuai kebutuhanmu.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Banner Platform (klik untuk filter cepat) ═══ -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="platform-banner" data-platform-banner>
+        <div class="skeleton" style="height:38px; width:100%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <button class="btn filter-drawer-toggle" data-filter-toggle>Filter</button>
+
+      <div class="shop-layout">
+        <!-- ═══ Filter Panel ═══ -->
+        <aside class="filter-panel" data-filter-panel>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>Filter</h3>
+            <button class="mobile-drawer__close" data-filter-close aria-label="Tutup filter" style="display:none;">✕</button>
+          </div>
+
+          <div class="filter-group">
+            <label>Cari</label>
+            <input type="search" data-shop-search placeholder="Nama akun, platform..." />
+          </div>
+
+          <div class="filter-group">
+            <label>Platform</label>
+            <div class="filter-checkbox-list" data-platform-filter-list></div>
+          </div>
+
+          <div class="filter-group">
+            <label>Kategori</label>
+            <div class="filter-checkbox-list" data-category-filter-list>
+              <div class="skeleton" style="height:16px; width:70%; margin-bottom:8px;"></div>
+              <div class="skeleton" style="height:16px; width:50%;"></div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label>Rentang Harga (Rp)</label>
+            <div class="filter-price-row">
+              <input type="number" data-min-price placeholder="Min" min="0" />
+              <span>—</span>
+              <input type="number" data-max-price placeholder="Max" min="0" />
+            </div>
+            <button class="btn btn-sm btn-block" style="margin-top:10px;" data-apply-price>Terapkan Harga</button>
+          </div>
+
+          <button class="btn btn-ghost btn-block" data-reset-filters>Reset Semua Filter</button>
+        </aside>
+        <div class="filter-drawer-backdrop" data-filter-backdrop></div>
+
+        <!-- ═══ Grid ═══ -->
+        <div>
+          <div class="shop-toolbar">
+            <span class="shop-toolbar__count" data-shop-count>Memuat...</span>
+            <div class="shop-toolbar__right">
+              <select data-sort-select aria-label="Urutkan">
+                <option value="newest">Terbaru</option>
+                <option value="price_asc">Harga: Rendah ke Tinggi</option>
+                <option value="price_desc">Harga: Tinggi ke Rendah</option>
+                <option value="popular">Populer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="account-grid" data-shop-grid></div>
+
+          <div style="text-align:center; margin-top:32px;">
+            <button class="btn btn-primary" data-load-more style="display:none;">Muat Lebih Banyak</button>
+          </div>
+
+          <!-- ═══ Akun Terjual (SOLD) — terpisah dari listing utama ═══ -->
+          <section class="sold-section" data-sold-section style="display:none;">
+            <div class="sold-section__head">
+              <h3>Akun Terjual <span class="badge badge--sold" data-sold-count>0</span></h3>
+              <button type="button" class="btn btn-sm btn-ghost" data-sold-toggle aria-expanded="true">Sembunyikan</button>
+            </div>
+            <p class="sold-section__hint">Akun berikut sudah terjual dan tidak bisa dibeli/ditawar lagi.</p>
+            <div class="account-grid" data-sold-grid></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand" data-site-name>ARRZ MARKET</div>
+          <p>Marketplace akun digital yang simpel dan terpercaya.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="shop.html">Beli Akun</a></li>
+            <li><a href="sell.html">Jual Akun</a></li>
+            <li><a href="how-it-works.html">Cara Kerja</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Bantuan</h4>
+          <ul>
+            <li><a href="faq.html">Pertanyaan Umum</a></li>
+            <li><a href="how-it-works.html">Panduan Transaksi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/shop.js"></script>
+  <script src="js/realtime.js"></script>
+</body>
+</html>
