@@ -1,0 +1,390 @@
+/* ============================================================
+   ARRZ MARKET — admin.css
+   Layout dashboard admin: login, sidebar, tabel, cards, form
+   ============================================================ */
+
+.admin-body {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ── Login screen ── */
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.admin-login__card {
+  background: var(--card);
+  border: var(--border-w) solid var(--ink);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 6vw, 36px);
+  width: 100%;
+  max-width: 380px;
+}
+
+.admin-login__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.admin-login__error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.admin-login__error.is-visible { display: block; }
+
+/* ── Shell layout ── */
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  background: var(--ink);
+  color: #efede3;
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.admin-sidebar__logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: var(--radius);
+  color: #c8c6c0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.admin-nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.admin-nav-link.is-active { background: var(--accent); color: #fff; }
+
+.admin-sidebar__spacer { flex: 1; }
+
+.admin-sidebar__logout {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+.admin-main {
+  padding: 28px 32px 60px;
+  overflow-x: hidden;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-topbar h1 { margin: 0; font-size: 1.5rem; }
+
+/* ── Dashboard stat cards ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: var(--border-w-sm) solid var(--ink);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+.stat-card__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.stat-card__value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* ── Panels / cards ── */
+.admin-panel {
+  background: var(--card);
+  border: var(--border-w-sm) solid var(--ink);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.admin-panel__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-panel__head h2 { margin: 0; font-size: 1.15rem; }
+
+/* ── Table ── */
+.admin-table-wrap { overflow-x: auto; }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  padding: 10px 12px;
+  border-bottom: var(--border-w-sm) solid var(--ink);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e0d3;
+  vertical-align: middle;
+}
+
+.admin-table tr:last-child td { border-bottom: none; }
+
+.admin-table td.mono { font-family: var(--font-mono); font-size: 0.82rem; }
+
+.admin-table__actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.table-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+  border: 2px solid var(--ink);
+  object-fit: cover;
+  background: var(--bg-raised);
+}
+
+/* ── Cari Akun (dashboard lookup) ── */
+.admin-lookup-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 2px solid var(--ink);
+  border-radius: 8px;
+  background: var(--bg-raised);
+}
+
+/* ── Tabs (filter status) ── */
+.tab-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  border: 2px solid var(--ink);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.tab-btn.is-active { background: var(--ink); color: #fff; }
+
+/* ── Drawer form (add/edit account) ── */
+.admin-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20,21,26,0.5);
+  display: none;
+  z-index: 90;
+  justify-content: flex-end;
+}
+
+.admin-drawer-overlay.is-open { display: flex; }
+
+.admin-drawer {
+  background: var(--card);
+  width: min(520px, 100vw);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-left: var(--border-w) solid var(--ink);
+  padding: clamp(16px, 5vw, 26px);
+}
+
+.admin-drawer__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-manage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(80px, 100%), 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.image-manage-item {
+  position: relative;
+  aspect-ratio: 1;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.image-manage-item img { width: 100%; height: 100%; object-fit: cover; }
+
+.image-manage-item__remove {
+  position: absolute;
+  top: 3px; right: 3px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: #fff;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.image-manage-item__star {
+  position: absolute;
+  bottom: 3px; left: 3px;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  font-size: 0.65rem;
+  padding: 1px 5px;
+  cursor: pointer;
+}
+
+.image-manage-item.is-primary .image-manage-item__star { background: var(--gold); }
+
+/* ── Empty state small ── */
+.admin-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar {
+    position: sticky;
+    top: 0;
+    height: auto;
+    max-height: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    padding: 12px 10px;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-sidebar__logo { display: none; }
+  .admin-sidebar__spacer { display: none; }
+  .admin-sidebar__logout {
+    border: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .admin-nav-link { white-space: nowrap; flex-shrink: 0; }
+  .admin-main { padding: 18px clamp(12px, 4vw, 20px) 60px; }
+  .admin-topbar h1 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+}
+
+@media (max-width: 480px) {
+  .admin-topbar { flex-direction: column; align-items: stretch; }
+  .admin-topbar .btn { width: 100%; }
+  .admin-panel { padding: 16px; }
+  .stat-card__value { font-size: 1.5rem; }
+}
+
+/* ============================================================
+   Transaksi — drawer detail + badge status pembayaran
+   ============================================================ */
+[data-tx-drawer] .admin-drawer { max-width: 480px; }
+[data-tx-drawer] .payment-block__row { font-size: 0.86rem; }
+[data-tx-drawer] h3 { margin: 18px 0 6px; font-size: 0.95rem; }
+[data-tx-drawer] h3:first-child { margin-top: 0; }
+
+.tx-proof-img {
+  max-width: 100%;
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+
+.tx-proof-img-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 21, 26, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 200;
+}
+.tx-proof-img-overlay.is-open { display: flex; }
+.tx-proof-img-overlay img { max-width: 100%; max-height: 90vh; border-radius: var(--radius); }
