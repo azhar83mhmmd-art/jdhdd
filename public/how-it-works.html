@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cara Kerja — ARRZ MARKET</title>
+  <meta name="description" content="Pelajari cara membeli, menawar, dan menjual akun di ARRZ MARKET." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="shop.html" class="btn btn-primary btn-sm">Cari Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <section class="section--tight" style="padding-top:36px;">
+    <div class="container">
+      <span class="eyebrow">Panduan</span>
+      <h1 style="margin-bottom:6px;">Cara Kerja ARRZ MARKET</h1>
+      <p>Semua transaksi diselesaikan langsung lewat WhatsApp dengan admin — sederhana dan transparan.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom:20px;">Untuk Pembeli</h2>
+      <div class="step-list">
+        <div class="step-card">
+          <span class="step-card__num">01</span>
+          <h3>Jelajahi Katalog</h3>
+          <p>Buka halaman Beli Akun, gunakan filter kategori dan harga, atau cari langsung dengan kata kunci.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">02</span>
+          <h3>Pilih Beli atau Tawar</h3>
+          <p>Klik "Beli Sekarang" jika setuju dengan harga yang tertera, atau "Tawar Harga" untuk mengajukan negosiasi.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">03</span>
+          <h3>Konfirmasi via WhatsApp</h3>
+          <p>Kamu akan diarahkan ke WhatsApp admin dengan pesan otomatis berisi detail akun. Lanjutkan pembayaran dan serah terima di sana.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <h2 style="margin-bottom:20px;">Untuk Penjual</h2>
+      <div class="step-list">
+        <div class="step-card">
+          <span class="step-card__num">01</span>
+          <h3>Isi Form Pengajuan</h3>
+          <p>Buka halaman Jual Akun, isi data akun selengkap mungkin, dan unggah foto sebagai bukti kepemilikan.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">02</span>
+          <h3>Verifikasi oleh Admin</h3>
+          <p>Tim kami akan meninjau pengajuanmu. Kamu akan dihubungi lewat WhatsApp untuk proses verifikasi lebih lanjut.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">03</span>
+          <h3>Akun Tayang di Marketplace</h3>
+          <p>Setelah disetujui, akunmu akan ditampilkan di katalog ARRZ MARKET dan siap ditemukan oleh calon pembeli.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band">
+        <div>
+          <h2>Siap Memulai?</h2>
+          <p>Jelajahi katalog akun atau ajukan akunmu sekarang.</p>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="shop.html" class="btn btn-gold">Beli Akun</a>
+          <a href="sell.html" class="btn" style="background:#fff;">Jual Akun</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
