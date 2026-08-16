@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jual Akun — ARRZ MARKET</title>
+  <meta name="description" content="Ajukan akun digitalmu untuk dijual di ARRZ MARKET." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <section class="section--tight" style="padding-top:36px;">
+    <div class="container" style="max-width: 760px;">
+      <span class="eyebrow">Ajukan Akunmu</span>
+      <h1 style="margin-bottom:6px;">Jual Akun</h1>
+      <p>Isi form di bawah ini selengkap mungkin. Setelah dikirim, kamu akan diarahkan ke WhatsApp admin untuk proses verifikasi lebih lanjut.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container" style="max-width: 760px;">
+      <form data-sell-form>
+
+        <h3 style="margin-bottom:14px;">Data Kamu</h3>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="seller-name">Nama Lengkap</label>
+            <input type="text" id="seller-name" name="seller_name" required maxlength="200" />
+          </div>
+          <div class="field">
+            <label for="seller-wa">Nomor WhatsApp</label>
+            <input type="tel" id="seller-wa" name="seller_whatsapp" required placeholder="08xxxxxxxxxx" maxlength="20" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="seller-email">Email (opsional)</label>
+          <input type="email" id="seller-email" name="seller_email" maxlength="200" />
+        </div>
+
+        <h3 style="margin:26px 0 14px;">Data Akun</h3>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="account-name">Nama Akun</label>
+            <input type="text" id="account-name" name="account_name" required maxlength="200" placeholder="Contoh: Akun Mobile Legends Mythic" />
+          </div>
+          <div class="field">
+            <label for="platform">Platform</label>
+            <input type="text" id="platform" name="platform" required maxlength="100" placeholder="Contoh: Mobile Legends" list="sell-platform-list" />
+            <datalist id="sell-platform-list">
+              <option value="Mobile Legends"></option>
+              <option value="Free Fire"></option>
+              <option value="PUBG"></option>
+              <option value="Genshin Impact"></option>
+              <option value="eFootball"></option>
+              <option value="Valorant"></option>
+              <option value="Instagram"></option>
+              <option value="Netflix"></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="category">Kategori</label>
+            <select id="category" name="category_id">
+              <option value="">Memuat kategori...</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="username">Username / ID Akun (opsional)</label>
+            <input type="text" id="username" name="username" maxlength="200" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="desired-price">Harga yang Diinginkan (Rp, opsional)</label>
+          <input type="number" id="desired-price" name="desired_price" min="0" placeholder="Kosongkan jika ingin didiskusikan" />
+          <div class="field__hint">Admin akan mengonfirmasi harga akhir setelah verifikasi.</div>
+        </div>
+        <div class="field">
+          <label for="description">Deskripsi</label>
+          <textarea id="description" name="description" rows="3" maxlength="3000" placeholder="Ceritakan tentang akun ini secara umum."></textarea>
+        </div>
+        <div class="field">
+          <label for="details">Detail Akun</label>
+          <textarea id="details" name="details" rows="3" maxlength="3000" placeholder="Level, rank, item, masa aktif, dsb."></textarea>
+        </div>
+        <div class="field">
+          <label for="features">Fitur Unggulan (opsional)</label>
+          <textarea id="features" name="features" rows="2" maxlength="3000"></textarea>
+        </div>
+        <div class="field">
+          <label for="additional-info">Informasi Tambahan (opsional)</label>
+          <textarea id="additional-info" name="additional_info" rows="2" maxlength="3000"></textarea>
+        </div>
+
+        <h3 style="margin:26px 0 14px;">Foto Akun</h3>
+        <div class="field">
+          <label>Unggah Foto (maks. 8 foto, JPG/PNG/WEBP, maks 5MB per foto)</label>
+          <div class="dropzone" data-dropzone>
+            <input type="file" data-photo-input accept="image/jpeg,image/png,image/webp" multiple />
+            <p style="margin:0; font-weight:600;">Klik atau seret foto ke sini</p>
+            <p style="margin:4px 0 0; font-size:0.85rem;">Sertakan bukti kepemilikan akun (screenshot profil, statistik, dll).</p>
+          </div>
+          <div class="photo-preview-grid" data-photo-preview></div>
+        </div>
+
+        <div class="field" style="margin-top:24px;">
+          <label class="checkbox-row">
+            <input type="checkbox" name="confirmed" required />
+            <span>Saya memastikan informasi yang saya berikan benar dan akun ini sepenuhnya milik saya.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Kirim Pengajuan</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/wa-templates.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/sell.js"></script>
+</body>
+</html>
