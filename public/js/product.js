@@ -225,11 +225,34 @@
         p_buyer_instagram: ig || null,
       });
       if (error) {
-        const code = error.message || '';
-        if (code.includes('AKUN_TIDAK_TERSEDIA')) throw new Error('Maaf, akun ini sedang tidak tersedia.');
-        if (code.includes('AKUN_TIDAK_DITEMUKAN')) throw new Error('Akun tidak ditemukan.');
-        if (code.includes('EMAIL_WAJIB_DIISI')) throw new Error('Email wajib diisi.');
-        if (code.includes('WHATSAPP_WAJIB_DIISI')) throw new Error('Nomor WhatsApp wajib diisi.');
+        // Selalu cetak error asli dari Supabase ke console — pesan toast di
+        // bawah ini sengaja ramah-pengguna, tapi console adalah tempat
+        // mendiagnosis penyebab sebenarnya (mis. RPC belum ter-deploy).
+        console.error('create_purchase_transaction gagal:', error);
+
+        const msg = error.message || '';
+        const pgCode = error.code || '';
+
+        if (msg.includes('AKUN_TIDAK_TERSEDIA')) throw new Error('Maaf, akun ini sedang tidak tersedia.');
+        if (msg.includes('AKUN_TIDAK_DITEMUKAN')) throw new Error('Akun tidak ditemukan.');
+        if (msg.includes('EMAIL_WAJIB_DIISI')) throw new Error('Email wajib diisi.');
+        if (msg.includes('WHATSAPP_WAJIB_DIISI')) throw new Error('Nomor WhatsApp wajib diisi.');
+
+        // 23505 = unique_violation. Bisa kena idx_tx_one_active (ada transaksi
+        // PENDING_PAYMENT lain yang masih aktif untuk akun ini) — biasanya
+        // karena klik ganda / dua tab hampir bersamaan.
+        if (pgCode === '23505' || msg.includes('duplicate key value')) {
+          throw new Error('Akun ini baru saja mulai diproses (mungkin dari klik sebelumnya). Silakan refresh halaman dan coba lagi.');
+        }
+
+        // PGRST202 / 42883 = fungsi RPC tidak ditemukan di schema PostgREST.
+        // Ini terjadi kalau supabase/migration_manual_qris.sql belum
+        // dijalankan di project Supabase yang dipakai, atau SUPABASE_URL /
+        // SUPABASE_ANON_KEY di supabase-client.js menunjuk ke project lain.
+        if (pgCode === 'PGRST202' || pgCode === '42883' || msg.toLowerCase().includes('schema cache') || msg.toLowerCase().includes('could not find the function')) {
+          throw new Error('Sistem pembayaran belum siap (fungsi database belum terpasang). Hubungi admin situs.');
+        }
+
         throw new Error('Gagal membuat invoice. Silakan coba lagi.');
       }
       const row = Array.isArray(data) ? data[0] : data;
