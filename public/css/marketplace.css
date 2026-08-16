@@ -716,6 +716,8 @@
   margin: 0 auto 14px;
   background: var(--bg-raised);
 }
+
+.dropzone {
   border: var(--border-w-sm) dashed var(--ink);
   border-radius: 8px;
   padding: 30px 20px;
