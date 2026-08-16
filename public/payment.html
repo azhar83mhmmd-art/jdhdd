@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pembayaran — ARRZ MARKET</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span data-site-name>ARRZ MARKET</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="index.html" class="navbar__link">Beranda</a>
+        <a href="shop.html" class="navbar__link">Beli Akun</a>
+        <a href="sell.html" class="navbar__link">Jual Akun</a>
+        <a href="how-it-works.html" class="navbar__link">Cara Kerja</a>
+        <a href="faq.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="shop.html" class="btn btn-primary btn-sm">Cari Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu">✕</button>
+      <a href="index.html" class="mobile-drawer__link">Beranda</a>
+      <a href="shop.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="sell.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="how-it-works.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="faq.html" class="mobile-drawer__link">FAQ</a>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container container--narrow">
+
+      <div data-payment-loading style="text-align:center; padding:60px 0;">
+        <div class="skeleton" style="height:24px; width:200px; margin:0 auto 20px;"></div>
+        <p>Memuat data pembayaran...</p>
+      </div>
+
+      <div class="empty-state" data-payment-not-found style="display:none;">
+        <h3>Transaksi Tidak Ditemukan</h3>
+        <p>Invoice yang kamu buka tidak valid atau tautannya salah.</p>
+        <a href="shop.html" class="btn btn-primary" style="margin-top:12px;">Kembali ke Katalog</a>
+      </div>
+
+      <div class="payment-page" data-payment-root style="display:none;">
+
+        <div class="payment-block">
+          <div class="payment-block__head">
+            <h1 style="margin:0; font-size:1.4rem;">Pembayaran</h1>
+            <span class="badge" data-payment-status-badge>—</span>
+          </div>
+          <p data-payment-status-desc style="margin:6px 0 0;"></p>
+          <div class="payment-block__row">
+            <span>Invoice</span>
+            <strong class="mono" data-payment-invoice></strong>
+          </div>
+          <div class="payment-block__row" data-payment-countdown-row style="display:none;">
+            <span>Batas waktu pembayaran</span>
+            <strong data-payment-countdown>—</strong>
+          </div>
+        </div>
+
+        <div class="payment-block">
+          <h3>Detail Akun</h3>
+          <div class="payment-block__row"><span>Nama</span><strong data-payment-account-name></strong></div>
+          <div class="payment-block__row"><span>ID</span><strong class="mono" data-payment-account-code></strong></div>
+          <div class="payment-block__row"><span>Platform</span><strong data-payment-platform></strong></div>
+          <div class="payment-block__row"><span>Kategori</span><strong data-payment-category></strong></div>
+          <div class="payment-block__row"><span>Harga</span><strong data-payment-price></strong></div>
+          <div class="payment-block__row payment-block__row--total"><span>Total</span><strong data-payment-total></strong></div>
+        </div>
+
+        <!-- ═══ QRIS — hanya tampil kalau masih PENDING_PAYMENT ═══ -->
+        <div class="payment-block" data-payment-qris-block>
+          <h3>Pembayaran QRIS</h3>
+          <p>Silakan scan QRIS DANA Bisnis di bawah menggunakan aplikasi pembayaran yang mendukung QRIS.</p>
+          <div class="payment-qris" data-payment-qris-image>
+            <div class="empty-state" style="padding:20px;"><p>QRIS pembayaran belum dikonfigurasi oleh admin.</p></div>
+          </div>
+          <div class="payment-block__row"><span>Pembayaran Ke</span><strong data-payment-merchant-name></strong></div>
+          <div class="payment-block__row"><span>Metode</span><strong>QRIS DANA Bisnis</strong></div>
+          <div class="payment-block__row" data-payment-dana-number-row style="display:none;">
+            <span>Nomor DANA</span><strong class="mono" data-payment-dana-number></strong>
+          </div>
+
+          <h3 style="margin-top:22px;">Cara Pembayaran</h3>
+          <ol class="payment-instructions" data-payment-instructions></ol>
+
+          <div class="payment-warning">
+            Jangan mengirim bukti pembayaran palsu. Pesanan hanya akan diproses setelah pembayaran diverifikasi oleh admin.
+          </div>
+        </div>
+
+        <!-- ═══ Form kirim bukti — hanya tampil kalau PENDING_PAYMENT ═══ -->
+        <div class="payment-block" data-payment-form-block>
+          <h3>Kirim Bukti Pembayaran</h3>
+          <form data-payment-form>
+            <div class="field">
+              <label>Metode Pembayaran</label>
+              <input type="text" value="QRIS DANA Bisnis" disabled />
+            </div>
+            <div class="field">
+              <label for="pay-sender-name">Atas Nama Pengirim</label>
+              <input type="text" id="pay-sender-name" name="sender_name" required maxlength="150" placeholder="Nama sesuai rekening/e-wallet" />
+            </div>
+            <div class="field">
+              <label for="pay-sender-number">Nomor DANA / Rekening Pengirim</label>
+              <input type="text" id="pay-sender-number" name="sender_account_number" required maxlength="60" placeholder="Nomor pengirim" />
+            </div>
+            <div class="field">
+              <label>Bukti Pembayaran</label>
+              <div class="dropzone" data-payment-dropzone style="padding:16px;">
+                <input type="file" data-payment-proof-input accept="image/jpeg,image/png,image/webp" />
+                <p style="margin:0; font-weight:600; font-size:0.88rem;">Klik atau seret foto bukti pembayaran</p>
+                <span class="field__hint">JPG, JPEG, PNG, atau WEBP — maksimal 5MB</span>
+              </div>
+              <div class="photo-preview-grid" data-payment-proof-preview></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Kirim Bukti Pembayaran</button>
+          </form>
+        </div>
+
+        <!-- ═══ Status pasca-submit / final ═══ -->
+        <div class="payment-block" data-payment-final-block style="display:none;">
+          <div class="payment-status-icon" data-payment-final-icon></div>
+          <h3 data-payment-final-title style="text-align:center;"></h3>
+          <p data-payment-final-message style="text-align:center;"></p>
+          <div data-payment-rejection-box class="payment-warning" style="display:none;">
+            <strong>Alasan penolakan:</strong> <span data-payment-rejection-reason></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> ARRZ MARKET. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/wa-templates.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/payment.js"></script>
+</body>
+</html>
