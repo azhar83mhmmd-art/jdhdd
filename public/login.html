@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Admin — ARRZ MARKET</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-login">
+    <div class="admin-login__card">
+      <div class="admin-login__logo">
+        <span class="navbar__logo-mark">A</span>
+        <span>ARRZ MARKET — Admin</span>
+      </div>
+
+      <div class="admin-login__error" data-login-error></div>
+
+      <form data-login-form>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="username" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script>
+    const form = document.querySelector('[data-login-form]');
+    const errorBox = document.querySelector('[data-login-error]');
+
+    // Jika sudah login sebagai admin, langsung lempar ke dashboard
+    (async () => {
+      const { data: { session } } = await supabaseClient.auth.getSession();
+      if (!session) return;
+      const { data: profile } = await supabaseClient
+        .from('profiles')
+        .select('role')
+        .eq('id', session.user.id)
+        .maybeSingle();
+      if (profile?.role === 'admin') window.location.href = 'admin.html';
+    })();
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorBox.classList.remove('is-visible');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Memproses...';
+
+      try {
+        const { data, error } = await supabaseClient.auth.signInWithPassword({
+          email: form.email.value.trim(),
+          password: form.password.value,
+        });
+        if (error) throw new Error('Email atau password salah.');
+
+        const { data: profile } = await supabaseClient
+          .from('profiles')
+          .select('role')
+          .eq('id', data.user.id)
+          .maybeSingle();
+
+        if (profile?.role !== 'admin') {
+          await supabaseClient.auth.signOut();
+          throw new Error('Akun ini tidak memiliki akses admin.');
+        }
+
+        window.location.href = 'admin.html';
+      } catch (err) {
+        errorBox.textContent = err.message;
+        errorBox.classList.add('is-visible');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Masuk';
+      }
+    });
+  </script>
+</body>
+</html>
