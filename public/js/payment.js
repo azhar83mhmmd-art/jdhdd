@@ -316,7 +316,7 @@
 
   proofInput?.addEventListener('change', () => handleFileSelect(proofInput.files[0]));
   dropzone?.addEventListener('click', (e) => {
-    if (e.target !== dropzone && e.target.tagName !== 'P') return;
+    if (e.target.closest('.photo-preview-item')) return;
     proofInput?.click();
   });
   ['dragover', 'dragenter'].forEach((evt) => {
@@ -367,7 +367,10 @@
       const { error: uploadErr } = await supabaseClient.storage
         .from('payment-proofs')
         .upload(path, selectedFile, { contentType: selectedFile.type, upsert: false });
-      if (uploadErr) throw new Error('Bukti pembayaran gagal diupload. Silakan coba lagi.');
+      if (uploadErr) {
+        console.error('Upload bukti pembayaran gagal:', uploadErr);
+        throw new Error('Bukti pembayaran gagal diupload. Silakan coba lagi.');
+      }
 
       const { data, error } = await supabaseClient.rpc('submit_payment_proof', {
         p_invoice_id: invoiceId,
@@ -376,10 +379,19 @@
         p_payment_proof_path: path,
       });
       if (error) {
+        console.error('submit_payment_proof gagal:', error);
         const msg = error.message || '';
+        const pgCode = error.code || '';
+        if (msg.includes('TRANSAKSI_TIDAK_DITEMUKAN')) throw new Error('Transaksi tidak ditemukan.');
         if (msg.includes('TRANSAKSI_KEDALUWARSA')) throw new Error('Transaksi ini telah kedaluwarsa.');
         if (msg.includes('BUKTI_SUDAH_DIKIRIM')) throw new Error('Bukti pembayaran untuk transaksi ini sudah dikirim.');
         if (msg.includes('PEMBAYARAN_DITOLAK')) throw new Error('Pembayaran ditolak oleh admin.');
+        if (msg.includes('NAMA_PENGIRIM_WAJIB_DIISI')) throw new Error('Atas nama pengirim wajib diisi.');
+        if (msg.includes('NOMOR_PENGIRIM_WAJIB_DIISI')) throw new Error('Nomor DANA/rekening pengirim wajib diisi.');
+        if (msg.includes('BUKTI_PEMBAYARAN_WAJIB_DIUPLOAD')) throw new Error('Bukti pembayaran wajib diupload.');
+        if (pgCode === 'PGRST202' || pgCode === '42883' || msg.toLowerCase().includes('schema cache') || msg.toLowerCase().includes('could not find the function')) {
+          throw new Error('Sistem pembayaran belum siap (fungsi database belum terpasang). Hubungi admin situs.');
+        }
         throw new Error('Gagal mengirim bukti pembayaran. Silakan coba lagi.');
       }
 
